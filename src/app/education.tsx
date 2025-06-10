@@ -69,7 +69,7 @@ export default function Education() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white py-16 relative overflow-hidden">
+    <section id="education" className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white py-16 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
@@ -361,6 +361,6 @@ export default function Education() {
           </div>
         </motion.section>
       </div>
-    </div>
+    </section>
   );
 }

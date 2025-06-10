@@ -181,7 +181,7 @@ export default function Projects() {
   const certificatesToShow = showAllCertificates ? certificates : certificates.slice(0, 4);
 
   return (
-    <div className="py-10 bg-[#FEF8E5] text-blue-900">
+    <section id="experience" className="py-10 bg-[#FEF8E5] text-blue-900">
       <div className="container mx-auto px-4">
         
         {/* Projects and UI Design Section - Side by Side */}
@@ -547,6 +547,6 @@ export default function Projects() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

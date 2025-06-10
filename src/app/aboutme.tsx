@@ -50,6 +50,22 @@ export default function AboutMe() {
     setImageError(prev => ({ ...prev, [index]: true }));
   };
 
+  // Handle View Resume button click
+  const handleViewResume = () => {
+    window.open('https://docs.google.com/document/d/114dVRK_-vmLw4CIkJtybB-ZrqV0L74h3zsYL79g6sxU/edit?usp=sharing', '_blank');
+  };
+
+  // Handle Contact Me button click
+  const handleContactMe = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     /* About Me Section - Full viewport height */
     <section 
@@ -100,7 +116,7 @@ export default function AboutMe() {
                 transition: { duration: 0.2 }
               }}
             >
-              My academic journey has equipped me with a comprehensive skillset spanning front-end development (React JS, HTML/CSS), mobile application development, system design, and the creation of intuitive UX/UI experiences.
+              My academic journey has equipped me with a comprehensive skillset spanning front-end development (React JS, JavaScript, Python, NextJS, PHP, HTML/CSS), mobile application development, system design, and the creation of intuitive UX/UI experiences.
             </motion.p>
             
             <motion.p 
@@ -138,7 +154,8 @@ export default function AboutMe() {
               transition={{ duration: 0.7, delay: 1.2 }}
             >
               <motion.button 
-                className="bg-blue-900 hover:bg-blue-800 text-white px-6 py-2 rounded shadow-lg transition-all"
+                onClick={handleViewResume}
+                className="bg-blue-900 hover:bg-blue-800 text-white px-6 py-2 rounded shadow-lg transition-all cursor-pointer"
                 whileHover={{ 
                   scale: 1.1,
                   boxShadow: "0px 10px 25px rgba(30, 58, 138, 0.4)",
@@ -147,11 +164,12 @@ export default function AboutMe() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                Download Resume
+                View Resume
               </motion.button>
               
               <motion.button 
-                className="border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white px-6 py-2 rounded shadow-lg transition-all"
+                onClick={handleContactMe}
+                className="border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white px-6 py-2 rounded shadow-lg transition-all cursor-pointer"
                 whileHover={{ 
                   scale: 1.1,
                   boxShadow: "0px 10px 25px rgba(30, 58, 138, 0.2)",

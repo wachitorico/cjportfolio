@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     absolute: "Cris Jhon B. Cantos - Portfolio",
   },
   icons: {
-    icon: '/boy-pablo-logo.png', // Path to your favicon in the public directory
+    icon: '/favicon.ico', // Path to your favicon in the public directory
   }
 };
 

@@ -12,12 +12,12 @@ const Navbar: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   
   const navItems = [
-    { id: 'home', icon: FaHome, label: 'Home', href: '#home' },
-    { id: 'about', icon: FaUser, label: 'About', href: '#about' },
-    { id: 'education', icon: FaGraduationCap, label: 'Education', href: '#education' },
-    { id: 'skills', icon: FaCogs, label: 'Skills', href: '#skills' },
-    { id: 'experience', icon: FaBriefcase, label: 'Experience', href: '#experience' },
-    { id: 'contact', icon: FaEnvelope, label: 'Contact', href: '#contact' }
+    { id: 'home', icon: FaHome, label: 'Home', href: '/home' },
+    { id: 'about', icon: FaUser, label: 'About', href: '/about' },
+    { id: 'education', icon: FaGraduationCap, label: 'Education', href: '/education' },
+    { id: 'skills', icon: FaCogs, label: 'Skills', href: '/skills' },
+    { id: 'experience', icon: FaBriefcase, label: 'Experience', href: '/experience' },
+    { id: 'contact', icon: FaEnvelope, label: 'Contact', href: '/contact' }
   ];
 
   useEffect(() => {

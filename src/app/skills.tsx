@@ -5,7 +5,7 @@ import { FaCamera, FaFilm, FaPenNib, FaLaptopCode } from 'react-icons/fa';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
-export default function SkillsLanguages() {
+export default function skills() {
   // Refs for different sections
   const languagesRef = useRef(null);
   const skillsRef = useRef(null);
@@ -74,7 +74,7 @@ export default function SkillsLanguages() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-black py-8 px-2 sm:px-4 md:px-6">
+    <section id="skills" className="bg-gradient-to-br from-gray-900 via-blue-900 to-black py-8 px-2 sm:px-4 md:px-6">
       <div className="max-w-6xl mx-auto">
 
         {/* Known Languages */}
@@ -173,6 +173,6 @@ export default function SkillsLanguages() {
           </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }

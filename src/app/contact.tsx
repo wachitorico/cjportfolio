@@ -32,14 +32,14 @@ export default function Contact() {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h1 
-          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-center"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 text-left"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           whileHover={{
-            scale: 1.05,
-            color: "#1e40af",
-            transition: { duration: 0.3 }
+        scale: 1.05,
+        color: "#1e40af",
+        transition: { duration: 0.3 }
           }}
         >
           contact me

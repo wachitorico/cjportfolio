@@ -21,6 +21,7 @@ type ProjectData = {
   title: string;
   subtitle: string;
   description: string;
+  image: string;
 };
 
 export default function Projects() {
@@ -28,60 +29,70 @@ export default function Projects() {
   const [activePopup, setActivePopup] = useState<ProjectKey | null>(null);
   const [showAllCertificates, setShowAllCertificates] = useState(false);
   
-  // Project data with descriptions
+  // Project data with descriptions and images - COMPLETE WITH ALL PROJECTS
   const projectsData: Record<ProjectKey, ProjectData> = {
     // Projects
     "ate-gangs": {
       title: "Ate Gangs Catering",
       subtitle: "Full-Stack Web Application",
-      description: "A comprehensive catering management system that streamlines order processing, menu management, and customer relationship features. Built with React, Node.js, and MongoDB."
+      description: "A comprehensive catering management system that streamlines order processing, menu management, and customer relationship features. Built with React, Node.js, and MongoDB.",
+      image: "/projects/2 copy.jpg"
     },
     "student-handbook": {
       title: "College Student Handbook",
       subtitle: "Digital Documentation Platform",
-      description: "An interactive digital handbook that provides students with easy access to college policies, procedures, and resources. Features search functionality and responsive design for all devices."
+      description: "An interactive digital handbook that provides students with easy access to college policies, procedures, and resources. Features search functionality and responsive design for all devices.",
+      image: "/projects/3 copy.jpg"
     },
     "blood-donation": {
       title: "Blood Donation",
       subtitle: "Community Health Platform",
-      description: "A platform connecting blood donors with recipients and hospitals, featuring real-time inventory management, appointment scheduling, and emergency request handling."
+      description: "A platform connecting blood donors with recipients and hospitals, featuring real-time inventory management, appointment scheduling, and emergency request handling.",
+      image: "/projects/blood-donation.jpg"
     },
     "seasense": {
       title: "Seasense",
       subtitle: "Environmental Monitoring System",
-      description: "An IoT-based system for monitoring marine environments, collecting and analyzing data on water quality, temperature, and marine life conditions to support conservation efforts."
+      description: "An IoT-based system for monitoring marine environments, collecting and analyzing data on water quality, temperature, and marine life conditions to support conservation efforts.",
+      image: "/projects/6 copy.jpg"
     },
     
     // UI Designs
     "ate-gangs-ui": {
       title: "Ate Gangs Catering",
       subtitle: "UI/UX Design",
-      description: "A colorful, user-friendly interface design for a catering service with emphasis on food photography, intuitive ordering flow, and seamless checkout process."
+      description: "A colorful, user-friendly interface design for a catering service with emphasis on food photography, intuitive ordering flow, and seamless checkout process.",
+      image: "/UI Designs/2.jpg"
     },
     "seasense-ui": {
       title: "Seasense",
       subtitle: "Data Visualization Interface",
-      description: "A clean, information-dense UI for environmental data with interactive charts, real-time updates, and accessibility features for researchers and conservationists."
+      description: "A clean, information-dense UI for environmental data with interactive charts, real-time updates, and accessibility features for researchers and conservationists.",
+      image: "/UI Designs/4.jpg"
     },
     "viyline": {
       title: "Viyline Store Website",
       subtitle: "E-commerce UI Design",
-      description: "Modern, minimalist e-commerce interface with strong visual hierarchy, prominent product imagery, and a streamlined shopping experience from browsing to purchase."
+      description: "Modern, minimalist e-commerce interface with strong visual hierarchy, prominent product imagery, and a streamlined shopping experience from browsing to purchase.",
+      image: "/UI Designs/1.jpg"
     },
     "starbucks": {
       title: "Starbucks Mockup",
       subtitle: "Mobile App Redesign",
-      description: "A conceptual redesign of the Starbucks mobile experience focusing on personalization, quick ordering, and reward tracking with a warm, inviting color palette."
+      description: "A conceptual redesign of the Starbucks mobile experience focusing on personalization, quick ordering, and reward tracking with a warm, inviting color palette.",
+      image: "/UI Designs/5.jpg"
     },
     "blood-donation-ui": {
       title: "Blood Donation Website",
-      subtitle: "Healthcare Platform Design",
-      description: "An accessible, emotionally resonant interface designed to encourage blood donation, featuring clear call-to-actions, donor stories, and location-based services."
+      subtitle: "Healthcare UI Design",
+      description: "A compassionate and accessible interface design for blood donation services, featuring clear call-to-actions, donor registration flow, and emergency request system.",
+      image: "/UI Designs/blood-donation-ui.jpg"
     },
     "handbook-ui": {
       title: "College Student Handbook",
       subtitle: "Information Architecture Design",
-      description: "A well-structured digital handbook design with intuitive navigation, search functionality, and visual organization of complex institutional information."
+      description: "A well-structured digital handbook design with intuitive navigation, search functionality, and visual organization of complex institutional information.",
+      image: "/UI Designs/3.jpg"
     }
   };
 
@@ -320,7 +331,7 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Popup Modal */}
+        {/* Popup Modal - FIXED IMAGE DISPLAY */}
         <AnimatePresence>
           {activePopup && projectsData[activePopup] && (
             <motion.div 
@@ -359,19 +370,50 @@ export default function Projects() {
                   <IoMdClose size={24} />
                 </motion.button>
                 
-                {/* Project image */}
+                {/* Project image - FIXED AND ENHANCED */}
                 <div className="w-full aspect-video bg-gradient-to-br from-gray-100 to-gray-300 rounded-t-lg relative overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-lg font-medium">
-                    Project Image (1920x1080)
-                    {/* Uncomment when you have images:
-                    <Image
-                      src={`/images/${activePopup}.jpg`}
-                      alt={projectsData[activePopup].title}
-                      fill
-                      className="object-cover"
-                    />
-                    */}
+                  <Image
+                    src={projectsData[activePopup].image}
+                    alt={projectsData[activePopup].title}
+                    fill
+                    className="object-cover transition-all duration-300"
+                    onError={(e) => {
+                      console.log(`Image not found: ${projectsData[activePopup].image}`);
+                      // Hide the image and show fallback
+                      e.currentTarget.style.display = 'none';
+                    }}
+                    priority
+                    onLoad={(e) => {
+                      // Hide fallback when image loads successfully
+                      const fallback = e.currentTarget.parentElement?.querySelector('.fallback-overlay') as HTMLElement;
+                      if (fallback) fallback.style.display = 'none';
+                    }}
+                  />
+                  
+                  {/* Beautiful fallback that shows when image fails to load */}
+                  <div className="fallback-overlay absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200">
+                    <div className="text-center p-8">
+                      <div className="text-6xl mb-4">
+                        {activePopup.includes('ui') ? '🎨' : '💻'}
+                      </div>
+                      <div className="text-2xl font-bold text-blue-900 mb-2">
+                        {projectsData[activePopup].title}
+                      </div>
+                      <div className="text-lg text-blue-700 mb-4">
+                        {projectsData[activePopup].subtitle}
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        Image preview coming soon
+                      </div>
+                    </div>
                   </div>
+                  
+                  {/* Hover overlay for loaded images */}
+                  <motion.div
+                    className="absolute inset-0 bg-blue-900/10 opacity-0 pointer-events-none"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </div>
                 
                 {/* Project details */}
